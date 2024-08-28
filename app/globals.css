@@ -16,12 +16,13 @@
   }
 }
 
+html,
 body {
   color: rgb(var(--foreground-rgb));
   height: 100vh;
   background-image: url("/assets/bg.jpeg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100vw 100vh;
   /* background: linear-gradient(
       to bottom,
       transparent,
