@@ -19,7 +19,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React, { useEffect, useState } from "react";
 import { Link as Scroll } from "react-scroll";
 import { makeStyles } from "@mui/styles";
-import { theme } from "@/app/theme/theme";
 import { Colors } from "@/app/theme/colors";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -28,10 +27,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "center",
     fontSize: "3rem",
     color: theme.typography.h5.color,
-  },
-  appDrawer: {
-    backgroundColor: Colors.background,
-    height: "100vh",
   },
 }));
 
@@ -114,7 +109,12 @@ export default function Header(props: Props) {
             keepMounted: true, // Better open performance on mobile.
           }}
         >
-          <Box className={classes.appDrawer}>
+          <Box
+            sx={{
+              backgroundColor: Colors.background,
+              height: "100vh",
+            }}
+          >
             <Typography
               variant="h6"
               textAlign="center"
