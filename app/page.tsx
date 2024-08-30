@@ -40,7 +40,9 @@ export default function Home(props: Props) {
           Nền tảng tạo Landing Page nhỏ nhất Việt nam
         </Typography>
         <Typography variant="h6">Tạo landing page</Typography>
-        <TextPageView texts={["Giới thiệu", "Ha la1", "Ha la2", "Ha la3"]}></TextPageView>
+        <TextPageView
+          texts={["Giới thiệu", "Ha la1", "Ha la2", "Ha la3"]}
+        ></TextPageView>
       </Box>
       <Box
         sx={(theme) => ({
