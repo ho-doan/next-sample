@@ -10,8 +10,11 @@ interface Props {
   title: string;
   children: React.ReactNode;
   paddingChild?: string | number;
+  spacing: number;
 }
-
+BoxCard.defaultProps = {
+  spacing: 0,
+};
 export default function BoxCard(props: Props) {
   const classes = useStyles();
 
@@ -19,7 +22,7 @@ export default function BoxCard(props: Props) {
     <Box
       sx={{
         padding: "15px",
-        minWidth: "100%",
+        width: "100%",
         borderRadius: "10px",
         backgroundColor: Colors.background,
       }}
@@ -45,7 +48,7 @@ export default function BoxCard(props: Props) {
         }}
       >
         <Stack
-          spacing={{ sx: 1, sm: 2 }}
+          spacing={props.spacing}
           direction="column"
           useFlexGap
           style={{

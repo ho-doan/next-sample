@@ -13,9 +13,11 @@
     --background-rgb: 0, 0, 0;
   }
 }
-html{
+
+html {
   background: rgb(var(--background-rgb));
 }
+
 html,
 body {
   color: rgb(var(--foreground-rgb));
@@ -29,4 +31,8 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+* {
+  box-sizing: border-box;
 }
