@@ -20,6 +20,7 @@ import React, { useEffect, useState } from "react";
 import { Link as Scroll } from "react-scroll";
 import { makeStyles } from "@mui/styles";
 import { Colors } from "@/app/theme/colors";
+import { usePathname, useRouter } from "next/navigation";
 
 const useStyles = makeStyles((theme: Theme) => ({
   iconSort: {},
@@ -27,6 +28,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: "center",
     fontSize: "3rem",
     color: theme.typography.h5.color,
+  },
+  header: {
+    display: "flex",
+    // height: "100vh",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
@@ -54,18 +61,19 @@ export default function Header(props: Props) {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const router = useRouter();
+  const path = usePathname();
+
+  const isHome = path === "/";
+
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   return (
     <div
       id="header"
-      style={{
-        display: "flex",
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      className={classes.header}
+      style={isHome ? { height: "100vh" } : { height: "7%" }}
     >
       <AppBar
         elevation={0}
@@ -130,7 +138,7 @@ export default function Header(props: Props) {
             <Divider />
             <List disablePadding>
               <ListItem disablePadding>
-                <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemButton sx={{ textAlign: "center" }} href="/">
                   <ListItemText primary="Home"></ListItemText>
                 </ListItemButton>
               </ListItem>
@@ -138,7 +146,7 @@ export default function Header(props: Props) {
             <Divider />
             <List disablePadding>
               <ListItem disablePadding>
-                <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemButton sx={{ textAlign: "center" }} href="/about">
                   <ListItemText primary="About"></ListItemText>
                 </ListItemButton>
               </ListItem>
@@ -151,31 +159,34 @@ export default function Header(props: Props) {
           </Box>
         </Drawer>
       </nav>
-      <Collapse
-        in={checked}
-        {...(checked ? { timeout: 1000 } : {})}
-        collapsedSize={30}
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography variant="h5" className={classes.welcomeText}>
-          Welcome to <br /> Hello <span style={{ color: "#ff00aa" }}>app</span>
-        </Typography>
-        <Scroll to="place-to-visit" smooth={true}>
-          <center>
-            <IconButton>
-              <ExpandMoreIcon
-                style={{
-                  color: "#5AFF3D",
-                  fontSize: "4rem",
-                }}
-              />
-            </IconButton>
-          </center>
-        </Scroll>
-      </Collapse>
+      {isHome && (
+        <Collapse
+          in={checked}
+          {...(checked ? { timeout: 1000 } : {})}
+          collapsedSize={30}
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h5" className={classes.welcomeText}>
+            Welcome to <br /> Hello{" "}
+            <span style={{ color: "#ff00aa" }}>app</span>
+          </Typography>
+          <Scroll to="place-to-visit" smooth={true}>
+            <center>
+              <IconButton>
+                <ExpandMoreIcon
+                  style={{
+                    color: "#5AFF3D",
+                    fontSize: "4rem",
+                  }}
+                />
+              </IconButton>
+            </center>
+          </Scroll>
+        </Collapse>
+      )}
     </div>
   );
 }

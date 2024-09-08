@@ -4,7 +4,6 @@ import React from "react";
 import ThemeRegistry from "../../theme-registry";
 import { createTheme, CssBaseline } from "@mui/material";
 import Header from "../header";
-import { PlaceToVisit } from "../../place-to-visit";
 import { theme } from "@/app/theme/theme";
 
 export default function Body({
@@ -18,8 +17,6 @@ export default function Body({
         <body>
           <CssBaseline />
           <Header />
-          <PlaceToVisit />
-          <br />
           {children}
         </body>
       </ThemeRegistry>
