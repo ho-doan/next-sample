@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useState } from "react";
+import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -23,9 +23,18 @@ type Props = {};
 
 export default function About(props: Props) {
   let lst = ["000", "ffaabb", "ff44aa"];
+
+  const [index, setIndex] = useState(0);
+
+  const handleSlideChange = (swiper: SwiperClass) => {
+    setIndex(swiper.activeIndex);
+    console.log("Slide changed to: ", swiper); // Get the active index
+  };
+
   return (
     <div style={{ width: "100%", height: "93%" }}>
       <Swiper
+        onSlideChange={handleSlideChange}
         modules={[
           Navigation,
           Pagination,
@@ -67,6 +76,7 @@ export default function About(props: Props) {
         {lst.map((e) => (
           <SwiperSlide
             key={e}
+            id={e}
             style={{
               height: "100%",
               display: "flex",
@@ -88,7 +98,7 @@ export default function About(props: Props) {
             alignItems: "center",
           }}
         >
-          <ContactComponent />
+          <ContactComponent activate={index == 3} />
         </SwiperSlide>
       </Swiper>
     </div>

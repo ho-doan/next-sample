@@ -11,6 +11,7 @@ interface Props {
   children: React.ReactNode;
   paddingChild?: string | number;
   spacing: number;
+  animation?: string;
 }
 BoxCard.defaultProps = {
   spacing: 0,
@@ -25,6 +26,7 @@ export default function BoxCard(props: Props) {
         width: "100%",
         borderRadius: "10px",
         backgroundColor: Colors.background,
+        animation: props.animation,
       }}
     >
       <Typography

@@ -1,5 +1,5 @@
 "use client";
-import { Box, Stack, Theme, Typography } from "@mui/material";
+import { Box, keyframes, Stack, Theme, Typography } from "@mui/material";
 import React from "react";
 import { makeStyles } from "@mui/styles";
 import { red } from "@mui/material/colors";
@@ -9,6 +9,35 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import MailIcon from "@mui/icons-material/Mail";
 import BoxCard from "../box-card";
 import StackLayout from "../stack-layout";
+
+const rightAni = keyframes`
+  0% {
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+            -webkit-filter: blur(12px) opacity(0%);
+            filter: blur(12px) opacity(0%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    -webkit-filter: blur(0.01);
+            filter: blur(0.01);
+  }
+`;
+const leftAni = keyframes`
+  0% {
+    -webkit-transform: translateX(-100px);
+            transform: translateX(-100px);
+            -webkit-filter: blur(12px) opacity(0%);
+            filter: blur(12px) opacity(0%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    -webkit-filter: blur(0.01);
+            filter: blur(0.01);
+  }
+`;
 
 const useStyles = makeStyles((theme: Theme) => ({
   rootContact: {
@@ -41,10 +70,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props {}
+interface Props {
+  activate: boolean;
+}
 
 export default function ContactComponent(props: Props) {
   const classes = useStyles();
+
+  console.log(props.activate);
 
   return (
     <div className={classes.rootContact}>
@@ -80,7 +113,12 @@ export default function ContactComponent(props: Props) {
                   width: "100%",
                 }}
               >
-                <BoxCard title="Trụ sở">
+                <BoxCard
+                  title="Trụ sở"
+                  animation={
+                    props.activate ? `${leftAni} 0.7s ease-in both` : undefined
+                  }
+                >
                   <Box
                     sx={{
                       display: "flex",
@@ -125,6 +163,9 @@ export default function ContactComponent(props: Props) {
                   title="Mạng xã hội"
                   spacing={2}
                   paddingChild="35px 20px"
+                  animation={
+                    props.activate ? `${leftAni} 0.7s ease-in both` : undefined
+                  }
                 >
                   <Box
                     sx={{
@@ -173,7 +214,12 @@ export default function ContactComponent(props: Props) {
                   width: "100%",
                 }}
               >
-                <BoxCard title="Tuyển dụng">
+                <BoxCard
+                  title="Tuyển dụng"
+                  animation={
+                    props.activate ? `${rightAni} 0.7s ease-in both` : undefined
+                  }
+                >
                   <Box
                     sx={{
                       display: "flex",
@@ -201,7 +247,13 @@ export default function ContactComponent(props: Props) {
                     <Typography variant="h6">Trụ sở</Typography>
                   </Box>
                 </BoxCard>
-                <BoxCard title="Liên kết nhanh">
+
+                <BoxCard
+                  title="Liên kết nhanh"
+                  animation={
+                    props.activate ? `${rightAni} 0.7s ease-in both` : undefined
+                  }
+                >
                   <Typography variant="h6">Trụ sở</Typography>
                   <Typography variant="h6">Trụ sở</Typography>
                   <Typography variant="h6">Trụ sở</Typography>
