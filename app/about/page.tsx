@@ -18,11 +18,12 @@ import {
 } from "swiper/modules";
 import ContactComponent from "../components/contact";
 import { Colors } from "../theme/colors";
+import PartnerComponent from "../components/partner";
 
 type Props = {};
 
 export default function About(props: Props) {
-  let lst = ["000", "ffaabb", "ff44aa"];
+  let lst = ["000", "ffaabb"];
 
   const [index, setIndex] = useState(0);
 
@@ -88,6 +89,19 @@ export default function About(props: Props) {
             {e}
           </SwiperSlide>
         ))}
+        <SwiperSlide
+          key="contact"
+          style={{
+            height: "100%",
+            display: "flex",
+            backgroundColor: Colors.background,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+           {/* activate={index == 3} */}
+          <PartnerComponent />
+        </SwiperSlide>
         <SwiperSlide
           key="contact"
           style={{

@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   rootContact: {
     height: "100%",
     width: "100vw",
-    background: 'url("/assets/bg.jpeg")',
+    backgroundImage: 'url("/assets/bg.jpeg")',
     backgroundRepeat: "no-repeat",
     backgroundSize: "100vw 100%",
     display: "flex",
@@ -74,7 +74,11 @@ interface Props {
   activate: boolean;
 }
 
-export default function ContactComponent(props: Props) {
+export default function ContactComponent(
+  props: Props = {
+    activate: true,
+  }
+) {
   const classes = useStyles();
 
   console.log(props.activate);

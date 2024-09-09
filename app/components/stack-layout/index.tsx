@@ -6,17 +6,17 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme: Theme) => ({}));
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode | undefined;
   center: boolean;
-  direction: 'row'|'column'
+  direction?: "row" | "column";
 }
 
-StackLayout.defaultProps = {
-  center: true,
-  direction: 'row',
-};
-
-export default function StackLayout(props: Props) {
+export default function StackLayout(
+  props: Props = {
+    center: true,
+    direction: "row",
+  }
+) {
   const classes = useStyles();
 
   return (

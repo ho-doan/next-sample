@@ -7,16 +7,18 @@ import { Colors } from "@/app/theme/colors";
 const useStyles = makeStyles((theme: Theme) => ({}));
 
 interface Props {
-  title: string;
-  children: React.ReactNode;
+  title?: string;
+  children?: React.ReactNode;
   paddingChild?: string | number;
-  spacing: number;
+  spacing?: number;
   animation?: string;
+  color?: string;
 }
-BoxCard.defaultProps = {
-  spacing: 0,
-};
-export default function BoxCard(props: Props) {
+export default function BoxCard(
+  props: Props = {
+    spacing: 0,
+  }
+) {
   const classes = useStyles();
 
   return (
@@ -25,7 +27,7 @@ export default function BoxCard(props: Props) {
         padding: "15px",
         width: "100%",
         borderRadius: "10px",
-        backgroundColor: Colors.background,
+        backgroundColor: props.color || Colors.background,
         animation: props.animation,
       }}
     >
