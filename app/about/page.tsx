@@ -19,11 +19,12 @@ import {
 import ContactComponent from "../components/contact";
 import { Colors } from "../theme/colors";
 import PartnerComponent from "../components/partner";
+import NewComponent from "../components/new";
 
 type Props = {};
 
 export default function About(props: Props) {
-  let lst = ["000", "ffaabb"];
+  let lst = ["000", "ffaabb", "ffaab1", "ffaab2"];
 
   const [index, setIndex] = useState(0);
 
@@ -76,7 +77,7 @@ export default function About(props: Props) {
       >
         {lst.map((e) => (
           <SwiperSlide
-            key={e}
+            key={`.s${e}`}
             id={e}
             style={{
               height: "100%",
@@ -90,7 +91,7 @@ export default function About(props: Props) {
           </SwiperSlide>
         ))}
         <SwiperSlide
-          key="contact"
+          key="partner"
           style={{
             height: "100%",
             display: "flex",
@@ -99,8 +100,19 @@ export default function About(props: Props) {
             alignItems: "center",
           }}
         >
-           {/* activate={index == 3} */}
-          <PartnerComponent />
+          <NewComponent activate={index == 5} />
+        </SwiperSlide>
+        <SwiperSlide
+          key="partner"
+          style={{
+            height: "100%",
+            display: "flex",
+            backgroundColor: Colors.background,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <PartnerComponent activate={index == 5} />
         </SwiperSlide>
         <SwiperSlide
           key="contact"
@@ -112,7 +124,7 @@ export default function About(props: Props) {
             alignItems: "center",
           }}
         >
-          <ContactComponent activate={index == 3} />
+          <ContactComponent activate={index == 6} />
         </SwiperSlide>
       </Swiper>
     </div>

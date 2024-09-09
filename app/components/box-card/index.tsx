@@ -26,6 +26,7 @@ export default function BoxCard(
       sx={{
         padding: "15px",
         width: "100%",
+        display: "table-row",
         borderRadius: "10px",
         backgroundColor: props.color || Colors.background,
         animation: props.animation,
@@ -49,6 +50,7 @@ export default function BoxCard(
         sx={{
           display: "flex",
           alignItems: "center",
+          width: "100%",
         }}
       >
         <Stack
@@ -57,6 +59,8 @@ export default function BoxCard(
           useFlexGap
           style={{
             padding: props.paddingChild,
+            width: "100%",
+            display: "flex",
           }}
         >
           {props.children}

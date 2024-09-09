@@ -96,11 +96,11 @@ export default function ContactComponent(
           >
             Liên hệ với chúng tôi
           </Typography>
-          <StackLayout center={false}>
+          <StackLayout center={false} direction="row">
             <Box
               sx={(theme) => ({
                 display: "flex",
-                width: "50%",
+                width: "45%",
                 [theme.breakpoints.down("sm")]: {
                   width: "100%",
                 },
@@ -200,7 +200,7 @@ export default function ContactComponent(
             </Box>
             <Box
               sx={(theme) => ({
-                width: "45%",
+                width: "40%",
                 display: "flex",
                 [theme.breakpoints.down("sm")]: {
                   minWidth: "100%",

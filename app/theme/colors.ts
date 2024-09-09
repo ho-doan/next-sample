@@ -3,5 +3,6 @@ export const Colors = {
     white: '#fff',
     black: '#000',
     color: 'rgb(var(--foreground-rgb))',
-    background:'rgb(var(--background-rgb))'
+    background: 'rgb(var(--background-rgb))',
+    transparent: '#0000'
 }
